@@ -1,0 +1,27 @@
+{
+  "name": "polyrhythm-forms",
+  "version": "0.1.0",
+  "homepage": "https://github.com/hobberwickey/polyrhythm-forms",
+  "authors": [
+    "Joel Weber <hobberwickey@gmail.com>"
+  ],
+  "description": "Simple activerecord compatible forms made with polymer 1.x",
+  "main": "polyrhythm-paper-form.html",
+  "moduleType": [],
+  "keywords": [
+    "polymer",
+    "forms",
+    "polyrhtythm"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "~1.0"
+  }
+}
