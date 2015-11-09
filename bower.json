@@ -22,6 +22,16 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "~1.0"
+    "polymer": "~1.0",
+    "paper-input": "PolymerElements/paper-input#~1.0.18",
+    "paper-radio-button": "PolymerElements/paper-radio-button#~1.0.11",
+    "paper-radio-group": "PolymerElements/paper-radio-group#~1.0.6",
+    "iron-selector": "PolymerElements/iron-selector#~1.0.8",
+    "iron-ajax": "PolymerElements/iron-ajax#~1.0.9",
+    "iron-form": "PolymerElements/iron-form#~1.0.11"
+  },
+  "resolutions": {
+    "polymer": "^1.0.0",
+    "webcomponentsjs": "^0.7.2"
   }
 }
