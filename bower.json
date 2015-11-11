@@ -22,7 +22,7 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "~1.0",
+    "polymer": "~1.2",
     "paper-input": "PolymerElements/paper-input#~1.0.18",
     "paper-radio-button": "PolymerElements/paper-radio-button#~1.0.11",
     "paper-radio-group": "PolymerElements/paper-radio-group#~1.0.6",
@@ -31,7 +31,8 @@
     "iron-form": "PolymerElements/iron-form#~1.0.11",
     "iron-icon": "PolymerElements/iron-icon#~1.0.7",
     "iron-icons": "PolymerElements/iron-icons#~1.0.4",
-    "paper-checkbox": "PolymerElements/paper-checkbox#~1.0.14"
+    "paper-checkbox": "PolymerElements/paper-checkbox#~1.0.14",
+    "paper-button": "PolymerElements/paper-button#~1.0.8"
   },
   "resolutions": {
     "polymer": "^1.0.0",

@@ -2,7 +2,7 @@
   PolyrhythmPaperComponents = {
 
     createSubmitButton: function(){
-      var button = this.createWithAttributes( "input", { type: "button", "class": "submit-button", value: this.options.submitText } )
+      var button = this.createWithAttributes( "paper-button", { "class": "submit-button", text: this.options.submitText } )
           button.addEventListener('click', function(){
             this.submit();
           }.bind(this), false)
