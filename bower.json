@@ -28,7 +28,10 @@
     "paper-radio-group": "PolymerElements/paper-radio-group#~1.0.6",
     "iron-selector": "PolymerElements/iron-selector#~1.0.8",
     "iron-ajax": "PolymerElements/iron-ajax#~1.0.9",
-    "iron-form": "PolymerElements/iron-form#~1.0.11"
+    "iron-form": "PolymerElements/iron-form#~1.0.11",
+    "iron-icon": "PolymerElements/iron-icon#~1.0.7",
+    "iron-icons": "PolymerElements/iron-icons#~1.0.4",
+    "paper-checkbox": "PolymerElements/paper-checkbox#~1.0.14"
   },
   "resolutions": {
     "polymer": "^1.0.0",
