@@ -75,8 +75,6 @@
         attributes[type.name] = updateFieldScope(fieldStructure, scope);
         attributes[type.value] = data[fieldStructure.key] || fieldStructure.value || type.default_value || "";
 
-        if (fieldStructure.type === "text") console.log(type.name, attributes[type.name])
-
         var input = this.createWithAttributes(type.input, attributes);
             input.label = fieldStructure.label || this.capitalize(fieldStructure.key);
         
@@ -107,7 +105,8 @@
         },
 
         password: function(fieldStructure, data, scope){
-          fieldStructure._type = 'password';
+          fieldStructure.attributes = fieldStructure.attributes || {};
+          fieldStructure.attributes.input_type = 'password';
           return this.createBoundInput(fieldStructure, data, scope);
         },
 

@@ -9,7 +9,7 @@
   <template>
     <paper-input-container>
       <label>{{ label }}</label>
-      <input is='iron-input' type="{{ _type }}" name="{{ _name }}" bind-value="{{ _value }}" />
+      <input is='iron-input' type="{{ input_type }}" name="{{ _name }}" bind-value="{{ _value }}" />
     </paper-input-container>
   </template>
 </dom-module>
@@ -17,11 +17,11 @@
 <script>
   (function(){
       Polymer({
-      is: "polyrhythm-textarea",
+      is: "polyrhythm-input",
       
       properties: {
         label: { type: String, value: "" },
-        _type: { type: String, value: "text" },
+        input_type: { type: String, value: "text" },
         _value: { type: String, value: "", notify: true },
         _name: { type: String }
       }
