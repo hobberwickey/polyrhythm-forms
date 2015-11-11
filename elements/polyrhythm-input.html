@@ -1,0 +1,30 @@
+<link rel='import' href='../../paper-input/paper-input-container.html'>
+<link rel='import' href='../../iron-input/iron-input.html'>
+
+<dom-module id='polyrhythm-input'>
+  <style>
+
+  </style>
+
+  <template>
+    <paper-input-container>
+      <label>{{ label }}</label>
+      <input is='iron-input' type="{{ _type }}" name="{{ _name }}" bind-value="{{ _value }}" />
+    </paper-input-container>
+  </template>
+</dom-module>
+
+<script>
+  (function(){
+      Polymer({
+      is: "polyrhythm-textarea",
+      
+      properties: {
+        label: { type: String, value: "" },
+        _type: { type: String, value: "text" },
+        _value: { type: String, value: "", notify: true },
+        _name: { type: String }
+      }
+    })
+  })();
+</script>

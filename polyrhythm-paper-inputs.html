@@ -39,6 +39,7 @@
       types: {
         "hidden": { input: "input", name: "name", value: "value", default_value: "" },
         "string": { input: "paper-input", name: "name", value: "value", default_value: "" },
+        "password": { input: "polyrhythm-input", name: "_name", value: "_value", default_value: "" },
         "text": { input: "polyrhythm-textarea", name: "_name", value: "_value", default_value: "" },
         "datetime": { input: "polyrhythm-datetime", name: "_name", value: "_value", default_value: new Date() },
         "select": { input: "polyrhythm-select", name: "_name", value: "_value", default_value: "" },
@@ -102,6 +103,11 @@
 
       inputs: {
         string: function(fieldStructure, data, scope){
+          return this.createBoundInput(fieldStructure, data, scope);
+        },
+
+        password: function(fieldStructure, data, scope){
+          fieldStructure._type = 'password';
           return this.createBoundInput(fieldStructure, data, scope);
         },
 
