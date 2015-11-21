@@ -268,10 +268,17 @@
               url: this.action, 
               body: this.method && /get/i.test(this.method) ? null : new FormData(form), 
               params: this.method && /get/i.test(this.method) ? JSON.stringify(this.data) : null, 
-              callback: callback,
               headers: { "x-requested-with": "XMLHttpRequest" }
             }
 
+            xhr.completes.then(
+              function(response){
+                callback(response, xhr.status)
+              },
+              function(response){
+                callback(response, xhr.status)
+              }
+            )
             xhr.send(options)
           } else {
             this.inTransit = true;

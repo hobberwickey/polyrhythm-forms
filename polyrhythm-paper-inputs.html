@@ -64,6 +64,8 @@
       },
 
       createBoundInput: function(fieldStructure, data, scope){
+        if (!fieldStructure.attributes) fieldStructure.attributes = {};
+          
         var scopeClass = scopeToClass(fieldStructure, scope),
             attributes = fieldStructure.attributes || {};
 
@@ -79,6 +81,7 @@
             input.label = fieldStructure.label || this.capitalize(fieldStructure.key);
         
         var attributes = objectMerge(defaultAttributes, fieldStructure.attributes, true);
+        console.log(attributes)
         for (var x in attributes) input[x] = attributes[x];
 
         data.observe(function(){
@@ -105,8 +108,7 @@
         },
 
         password: function(fieldStructure, data, scope){
-          fieldStructure.attributes = fieldStructure.attributes || {};
-          fieldStructure.attributes.input_type = 'password';
+          fieldStructure.attributes = {_type: 'password'};
           return this.createBoundInput(fieldStructure, data, scope);
         },
 
