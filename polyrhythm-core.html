@@ -1,4 +1,3 @@
-
 <script src='observables.js'></script>
 
 <script>
@@ -8,6 +7,21 @@
         if (data[key] === void(0)) data[key] = structure.value || null;
         return data;
       }
+    }
+
+    function merge(obj1){
+      if (!obj1) return null
+      
+      var result = JSON.parse( JSON.stringify( obj1 ) );
+      for (var i=1; i<arguments.length; i++){
+        if (!!arguments[i]){
+          for (var x in arguments[i]){
+            result[x] = arguments[i][x];
+          }
+        }
+      }
+
+      return result;
     }
 
     function scopeNestData(structure, data, key){
@@ -238,17 +252,15 @@
       },
 
       submit: function(){
-        console.log(this.unscopedData);
-        //return
+        this._submit();
+      },
+
+      _submit: function(options){
+        options = options || {};
 
         var xhr = document.createElement("iron-request")
             form = this.$("form"),
             button = this.$("#submit-button");
-
-        var callback = function(resp){
-          this.inTransit = false;
-          this.handleXhrCallback(resp);
-        }.bind(this);
 
         if (this.inTransit) return;
         //if (this.isFormInvalid()) return; 
@@ -263,23 +275,26 @@
               data = this.data;
             }
 
-            var options = { 
+            var _options = { 
               method: this.method, 
               url: this.action, 
               body: this.method && /get/i.test(this.method) ? null : new FormData(form), 
               params: this.method && /get/i.test(this.method) ? JSON.stringify(this.data) : null, 
-              headers: { "x-requested-with": "XMLHttpRequest" }
+              headers: merge({ "x-requested-with": "XMLHttpRequest" }, options.headers)
             }
 
             xhr.completes.then(
               function(response){
-                callback(response, xhr.status)
-              },
+                this.inTransit = false;
+                this.xhrSuccess( JSON.parse(response.response), response.status )
+              }.bind(this),
               function(response){
-                callback(response, xhr.status)
-              }
+                this.inTransit = false;
+                this.xhrFailure( response.message )
+              }.bind(this)
             )
-            xhr.send(options)
+
+            xhr.send(_options)
           } else {
             this.inTransit = true;
             form.submit();
@@ -289,8 +304,31 @@
         }
       },
 
-      handleXhrCallback: function(){
+      xhrSuccess: function(){
 
+      },
+
+      xhrFailure: function(){
+
+      },
+
+      createCookie: function(name, value, days){
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime()+(days*24*60*60*1000));
+            var expires = "; expires="+date.toGMTString();
+        }
+        else var expires = "";
+        document.cookie = name+"="+value+expires+"; path=/";
+      },
+
+      readCookie: function(name) {
+        function escape(s) { 
+          return s.replace(/([.*+?\^${}()|\[\]\/\\])/g, '\\$1'); 
+        };
+        
+        var match = document.cookie.match(RegExp('(?:^|;\\s*)' + escape(name) + '=([^;]*)'));
+        return match ? match[1] : null;
       }
     }
   })();

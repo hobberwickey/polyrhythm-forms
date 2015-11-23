@@ -44,7 +44,6 @@
     },
 
     createInput: function(fieldStructure, data, scope){
-      console.log(this.inputs)
       return this.inputs[fieldStructure.type].call(this, fieldStructure, data, scope);
     }
   }

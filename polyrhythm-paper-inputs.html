@@ -81,7 +81,6 @@
             input.label = fieldStructure.label || this.capitalize(fieldStructure.key);
         
         var attributes = objectMerge(defaultAttributes, fieldStructure.attributes, true);
-        console.log(attributes)
         for (var x in attributes) input[x] = attributes[x];
 
         data.observe(function(){
